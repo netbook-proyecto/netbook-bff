@@ -1,4 +1,4 @@
-package com.netbook.bff.modells.entities;
+package com.netbook.bff.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

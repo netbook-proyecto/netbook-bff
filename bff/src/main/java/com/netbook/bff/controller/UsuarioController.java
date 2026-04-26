@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netbook.bff.modells.entities.Usuario;
+import com.netbook.bff.models.entities.Usuario;
 import com.netbook.bff.services.UsuarioService;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
     
     //inyectamos el servicio
@@ -28,10 +28,14 @@ public class UsuarioController {
     }
 
     //buscar usuario por id espesifica
-     @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public Usuario obtenerUsuarioPorId(@PathVariable("id") Integer id) {
         return usuarioService.obtenerUsuarioPorId(id);
     }
     
-
+    //guardar usuario
+    @PostMapping
+    public Usuario crearUsuario(@RequestBody Usuario usuario) {
+        return usuarioService.guardarUsuario(usuario); 
+    }
 }
